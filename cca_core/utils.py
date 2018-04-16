@@ -16,6 +16,7 @@ def download_stop_words():
     # Downloading English stopwords
     nltk.download('stopwords')
     nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
 
 
 '''

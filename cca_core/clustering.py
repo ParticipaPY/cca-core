@@ -14,9 +14,9 @@ from sklearn.cluster import KMeans, AgglomerativeClustering
 from sklearn.manifold import MDS
 from sklearn import metrics
 from sklearn.metrics.pairwise import cosine_similarity
-from prueba_paquete.utils import tokenize_and_remove_stop_words, tokenize_and_stem,\
+from cca_core.utils import tokenize_and_remove_stop_words, tokenize_and_stem,\
                   download_stop_words
-from prueba_paquete.concept_extraction import ConceptExtractor
+from cca_core.concept_extraction import ConceptExtractor
 
 
 class DocumentClustering:

@@ -8,7 +8,7 @@ Created on Sat Oct 14 17:07:11 2017
 
 import nltk
 import re
-from prueba_paquete.utils import tokenize_and_remove_stop_words, download_stop_words
+from cca_core.utils import tokenize_and_remove_stop_words, download_stop_words
 
 
 class ConceptExtractor():

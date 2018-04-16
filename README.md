@@ -2,6 +2,7 @@
 cca-core  (Civic CrowdAnalytics Core) offers machine learning and natural language processing utilities for processing civic text input.
 
 # Requirements
+- scipy >= 0.19.1
 - nltk >= 3.2.4
 - scikit-learn >= 0.18.2
 - beautifulsoup4 >= 4.6.0
