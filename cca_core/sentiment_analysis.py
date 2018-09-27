@@ -39,10 +39,10 @@ class SentimentAnalyzer:
     _sia = SentimentIntensityAnalyzer()
     _tagged_docs = []
 
-    def __init__(self, neu_inf_lim=-0.3,
-                 neu_sup_lim=0.3,
+    def __init__(self, neu_inf_lim=-0.05,
+                 neu_sup_lim=0.05,
                  language="english",
-                 negation_handling = True,
+                 negation_handling = False,
                  hashtags=[],
                  n_gram_handling = True):
         self.neu_inf_lim = neu_inf_lim
@@ -60,7 +60,8 @@ class SentimentAnalyzer:
         if language == "spanish":
             self.load_spa_resources()
             self.algorithm = "ML-Senticon"
-            self.need_normalization = True
+            # More research needed on normalizing scores
+            # self.need_normalization = True
         elif language == "english":
             self.algorithm = "nltk_vader"
         else:
@@ -212,7 +213,19 @@ class SentimentAnalyzer:
         Normalize polarity scores into the range [-1,1] and 
         recalculates predicted sentiment label according to
         the normalized score.
+
+        Notes: tests with normalization have not been conclusive
+        enough. Normalized scores depend too heavily on the max and
+        min scores obtained in a given document set. 
+        Thus, a normalized score is not comparable with the normalized
+        score from another document set, with its own max and min values.
+
+        If scores are not normalized, they are are absolute values 
+        and comparable with the scores obtained with other document
+        set. This is the main reason why we opted for not using
+        this method and not normalizing any score.
         """
+
         normalized = []
         max_val = self.max_score
         min_val = self.min_score
@@ -285,7 +298,6 @@ class SentimentAnalyzer:
         for doc in docs:
             results.append(self.analyze_doc(doc))
         if self.need_normalization and len(docs) > 1:
-            print('------va a normalizar----------')
             results = self.normalize_scores(results)
         self._tagged_docs = results
 

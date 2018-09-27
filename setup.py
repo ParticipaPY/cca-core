@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
   name = 'cca_core',
   packages = ['cca_core'], # this must be the same as the name above
-  version = '0.1.3',
+  version = '0.1.5',
   description = 'NLP and ML modules for processing civic input',
   author = 'Marcelo Alcaraz',
   author_email = 'marce.mmad@gmail.com',
